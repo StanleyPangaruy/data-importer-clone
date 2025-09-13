@@ -1,0 +1,9 @@
+[project]
+name = "importer"
+version = "0.1.0"
+requires-python = ">=3.13"
+dependencies = [
+    # It depends on our local parser package
+    "parser",
+    "polars>=1.3.1",
+]

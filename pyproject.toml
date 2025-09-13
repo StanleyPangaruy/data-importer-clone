@@ -1,0 +1,42 @@
+[project]
+name = "eiti-data-importer"
+version = "0.1.0"
+description = "The EITI Data Importer is an internal tool used by the EITI Secretariat to upload new data to their upcoming Companies database."
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "parser",
+    "importer",
+    "api",
+    "ruff>=0.13.0",
+]
+
+[tool.uv.workspace]
+# This tells uv where to find all the local packages
+members = [
+    "packages/*",
+    "services/*"
+]
+
+[tool.uv.sources]
+# This tells the resolver to use the local workspace packages
+# when it sees these names in a `dependencies` list.
+parser = { workspace = true }
+importer = { workspace = true }
+api = { workspace = true }
+
+
+[tool.commitizen]
+name = "cz_conventional_commits"
+tag_format = "$version"
+version_scheme = "pep440"
+version_provider = "uv"
+update_changelog_on_bump = true
+major_version_zero = true
+
+[dependency-groups]
+dev = [
+    "basedpyright>=1.31.4",
+    "commitizen>=4.9.1",
+    "pytest>=8.4.2",
+]
