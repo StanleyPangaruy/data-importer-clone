@@ -1,0 +1,93 @@
+# --- Python ---
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Pytest
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+pytest-report.html
+
+# Basedpyright / Pyright
+.pyright/
+
+
+# --- Virtual Environments ---
+.env*
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+# to keep the examples from being ignored
+!.env.example
+!.env.test.example
+
+# --- Local Secrets & Config (NEVER commit secrets!) ---
+# Use .env.example as a template for your team
+*.env
+local_settings.py
+.secrets
+secrets.json
+
+# --- IDEs / Editors ---
+# VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/
+
+# JetBrains (PyCharm, etc.)
+.idea/
+
+# Zed
+.zed/
+
+# --- OS Specific ---
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# Linux
+*~
+.swp
+.swo
+
+# --- Jupyter Notebook ---
+.ipynb_checkpoints
+
+# --- Logs ---
+*.log
