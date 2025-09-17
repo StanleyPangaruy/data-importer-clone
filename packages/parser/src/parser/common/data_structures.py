@@ -1,32 +1,21 @@
-from dataclasses import dataclass, field
 from enum import Enum
-from typing import Any, List
+from typing import Any, Dict, List, Optional
+from pydantic import BaseModel, Field
 
 class ErrorCode(str, Enum):
-    UNKNOWN = "unknown"
-    STRUCTURE = "structure"
-    DATA_TYPE = "data_type"
+    GENERIC_ERROR = "GENERIC_ERROR"
 
-@dataclass
-class ValidationError:
+class ValidationError(BaseModel):
     code: ErrorCode
     message: str
-    row: int | None = None
-    column: str | None = None
+    row_index: Optional[int] = None
+    column_index: Optional[int] = None
+    cell_value: Optional[Any] = None
 
+class DiagnosticsReport(BaseModel):
+    errors: List[ValidationError] = Field(default_factory=list)
 
-@dataclass
-class DiagnosticsReport:
-    errors: List[ValidationError] = field(default_factory=list)
-    cleaning_log: List[str] = field(default_factory=list)
-
-
-@dataclass
-class UserReport:
-    about: dict
-    economic_contribution: dict
-    entities_and_projects: dict
-    extractive_revenues: dict
-    gov_revenues: dict
-    errors: list = []
-    cleaning_log: list = []
+class UserReport(BaseModel):
+    extracted_data: Dict[str, Any]
+    diagnostics: DiagnosticsReport = Field(default_factory=DiagnosticsReport)
+    cleaning_log: List[Any] = Field(default_factory=list)
